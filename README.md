@@ -1,2 +1,2 @@
 # RealEstate-WebApp
-Web application for real estate (user registration, real estate advertising, search by multiple criteria) made in Angular and NodeJs (MEAN stack)
+Web application that allows its users to register and login, view information and images of real estate available for buying, search for real estate by multiple criteria, or post an advertisment. Made in Angular+NodeJs (MEAN stack)
