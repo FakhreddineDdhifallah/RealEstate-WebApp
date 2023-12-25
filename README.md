@@ -3,11 +3,15 @@ Web application that allows users to register and login, view information and im
 
 To run the project from command line:
 
-Backend:
+Backend
+```
   tsc
   npm start
+```
 
-Frontend:
+Frontend
+```
   ng serve --open
+```
 
 
