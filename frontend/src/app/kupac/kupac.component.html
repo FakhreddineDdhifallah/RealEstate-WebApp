@@ -1,0 +1,134 @@
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <header>
+        <mat-toolbar class="header">
+            <span style="font-style: italic;" [routerLink]="['']">prodajanekretnina.rs</span> 
+                <span class="example-spacer2"></span>
+                <span class="example-spacer2"></span>
+            <a [routerLink]="['/kupac']" style="color: white;">Početna stranica</a>
+            <span class="example-spacer2"></span>
+            <a [routerLink]="['/advancedsearch']" style="color: white;">Napredna pretraga</a>
+            <span class="example-spacer2"></span>
+            <a [routerLink]="['/favorites']" style="color: white;">Omiljene nekretnine</a>
+            <span class="example-spacer"></span>
+            <a  [routerLink]="['']" (click)="logout()" style="color: white;">Odjavi se</a>
+          </mat-toolbar>
+      </header>
+      <br>
+      <div class='container-fluid'>
+          
+        <div class='row'>
+             <div class='col-sm-8'>
+                <span style="font-style: italic;color: blue;margin-left: 20px;">Dobrodošli {{user.name}}</span>
+
+<br><br>
+<div class="card" style="width: fit-content;height:fit-content;margin-left: 18px;">
+    <div class="card-body">
+<span style="color: dodgerblue;font-size: large;">Pretražite nekretnine</span>
+<br><br>
+<table>
+    <tr>
+        <td>Tip nekretnine 
+        
+            <select name="tipNekretnine"style="width: 120px;"  [(ngModel)]='type' required>
+                <option value="Stan">Stan</option>
+                <option value="Kuca">Kuca</option>
+                <option value="Vikendica">Vikendica</option>
+                <option value="Lokal">Lokal</option>
+                <option value="Magacin">Magacin</option>  
+            </select>
+        </td>
+        <td>
+            Lokacija<input type="text" name='lokacija' [(ngModel)]='location'>
+        </td>
+        <td>
+            Maksimalna cena (€)<input type="number" name="cena" [(ngModel)]='price'>
+        </td>
+        <td>
+            Minimalna kvadratura<input type="number" name='kvadratura' [(ngModel)]='area'>
+        </td>
+        <td style="width: 480px;">
+            Minimalan broj soba<br>
+            <select name="minBrSoba" name='sobe' style="width: 120px;"  [(ngModel)]='rooms'>
+            
+                <option>1</option>
+                <option>1.5</option>
+                <option>2</option>
+                <option>2.5</option>
+                <option>3</option> 
+                <option>3.5</option> 
+                <option>4</option> 
+                <option>4.5</option> 
+                <option>5</option>   
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <br>
+        <input type="button" name="dugme" value="Pretraži" class="form-control" style="background-color: dodgerblue;color: white;" (click)='search()' >
+    </tr>
+</table>
+</div>
+</div>
+<br>
+<div class="card" style="width: fit-content;height:fit-content;margin-left: 18px;" *ngFor='let r of realEstates'>
+    <div class="card-body">
+      
+    
+<table style="width: 100%;">
+    
+    <tr >
+        <td>
+            <img width='300px' height='250px' src='assets/{{r.images[0]}}' routerLink="/details/{{r._id}}">
+        </td>
+        <td>
+            <table style="width: 1200px;margin-left: 20px;">
+                <tr>
+                    <a routerLink="/details/{{r._id}}" >{{r.name}}-{{r.town}}-{{r.municipality}}-{{r.microlocation}}</a> 
+                </tr>
+                <tr>
+                    <td>Površina: {{r.area}}m2</td>
+                    <td>Cena:<b><span style="color: green;"> {{r.price}}€</span></b></td>
+                </tr>
+                <tr>
+                    <td>Broj soba: {{r.rooms}}</td>
+                    <td> Prosečna cena kvadrata na lokaciji: 
+                        <span *ngIf="r.avgPrice>=r.price/r.area" style="color: green;">
+                        {{r.avgPrice}} €
+                      </span>
+                      <span *ngIf="r.avgPrice<r.price/r.area" style="color: red;">
+                       {{r.avgPrice}} €
+                      </span></td>
+                    
+                </tr>
+                <tr>
+                    <td>Sprat: {{r.floor}}</td>
+                </tr>
+                <tr>
+                    <td style="width: 30%;">
+                     {{r.about}}
+                    </td>
+                </tr>
+            </table>
+        </td>
+        
+    </tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<footer>
+    <p>prodajanekretnina.rs</p>
+  </footer>
+</body>
+
+
+

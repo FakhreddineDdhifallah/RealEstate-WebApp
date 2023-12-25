@@ -1,0 +1,39 @@
+[{
+  "_id": {
+    "$oid": "620c0c888fc6a9598aa57d46"
+  },
+  "name": "Terazije",
+  "address": "Terazije 46",
+  "town": "Beograd",
+  "phone": "064547839",
+  "PIB": "06478309"
+},{
+  "_id": {
+    "$oid": "620c0cbb8fc6a9598aa57d67"
+  },
+  "name": "Beohost",
+  "address": "Kralja Milana 38",
+  "town": "Beograd",
+  "phone": "06374984",
+  "PIB": "088439"
+},{
+  "_id": {
+    "$oid": "620c1420e25e8a4db8b61b3b"
+  },
+  "name": "Telep",
+  "address": "Bulevar Oslobodjenja 28",
+  "town": "Novi Sad",
+  "phone": "0658329",
+  "PIB": "324353645",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "620fc3b24151974694d73613"
+  },
+  "name": "Cvrcak",
+  "address": "Karadjordjeva 14",
+  "town": "Sabac",
+  "phone": "015/372837",
+  "PIB": "321546546",
+  "__v": 0
+}]

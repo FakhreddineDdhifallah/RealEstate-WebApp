@@ -1,0 +1,40 @@
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <header>
+        <mat-toolbar class="header">
+            <span style="font-style: italic;" [routerLink]="['']">prodajanekretnina.rs</span> 
+                <span class="example-spacer2"></span>
+                <span class="example-spacer2"></span>
+            <a [routerLink]="['/admin']" style="color: white;">Početna stranica</a>
+            <span class="example-spacer2"></span>
+            <a [routerLink]="['/novaagencija']" style="color: white;">Unos nove agencije</a>
+            <span class="example-spacer"></span>
+            <span style="font-style: italic;">{{user.name}}</span>
+            <span class="example-spacer2"></span>
+            <a  [routerLink]="['']" (click)="logout()" style="color: white;">Odjavi se</a>
+          </mat-toolbar>
+        
+    </header>
+    <br>
+    <div class="form-group" style="margin-left: 30px; width: 300px;">
+        <label for="usr">Naziv agencije:</label>
+        <input type="text"  name='name' class="form-control"  [(ngModel)]='name'>
+        <label for="usr">Adresa agencije:</label>
+        <input type="text" name='surname' class="form-control"  [(ngModel)]='address'>
+        <label for="usr">Grad:</label>
+        <input type="text"  name='username' class="form-control"  [(ngModel)]='town'>
+        <label for="usr">Telefon agencije:</label>
+        <input type="text"  name='lozinka' class="form-control"  [(ngModel)]='phone'>
+        <label for="usr">Poreski identifikacioni broj (PIB):</label>
+        <input type="text"  name='pib' class="form-control"  [(ngModel)]='pib'><br>  
+         <input type="button" name="dugme" value="Dodaj novu agenciju" class="form-control" style="background-color: dodgerblue;color: white;"  (click)="addNewAgency()">
+         <span style="color: red;">{{errMessage}}</span>
+        </div>
+      
+
+<footer>
+    <p>prodajastanova.com</p>
+  </footer>
+</body>

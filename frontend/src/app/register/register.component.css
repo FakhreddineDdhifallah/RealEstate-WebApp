@@ -1,0 +1,27 @@
+.header{
+  background-color: rgb(218, 112, 13);
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: white;
+  padding: 50px;
+  font-size: large;
+  
+}
+footer {
+  background-color: rgb(218, 112, 13);
+  padding: 10px;
+  text-align: center;
+  color: white;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+.example-spacer2{
+  flex: 0.03 0.1 auto;
+}
+re-captcha.is-invalid > div {
+  border: 1px solid #dc3545 !important;
+  border-radius: 0.2rem;
+}
+
+

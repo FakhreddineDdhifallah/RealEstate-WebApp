@@ -1,0 +1,69 @@
+<form>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">    
+        <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+
+    </head>
+    <body>
+        <header>
+            <mat-toolbar class="header">
+               <span style="font-style: italic;" [routerLink]="['']">prodajanekretnina.rs</span> 
+                <span class="example-spacer"></span>
+                <a [routerLink]="['/kupacadminreg']" style="color: white;">Kupi nekretninu</a>
+                <span class="example-spacer2"></span>
+                <a [routerLink]="['/oglasivacreg']" style="color: white;">Oglasi nekretninu</a>
+                <span class="example-spacer2"></span>
+                <a [routerLink]="['/adminreg']" style="color: white;">Administrator</a>
+              </mat-toolbar>
+          </header>
+
+        <div class='container-fluid'>
+            <div class='row'>
+
+                 
+                <br>
+                <div class="card" style="width:250px ;height:250px;">
+                    <div class="card-body">
+                <input type="text" name="ime"  placeholder="Korisničko ime" [(ngModel)]='username'><br><br>
+                <input type="password" name="lozinka" placeholder="Lozinka" [(ngModel)]='password'><br><br>
+                <input type="button" name="dugme" value="Prijavi se" (click)='signIn()'><br><br>
+                <span style="color: red; font-size: small;">{{err}}</span>
+                
+                Nemate nalog? <a routerLink='register'>Registrujte se</a>
+                </div>
+                    
+                </div>
+                    <div class="card" style="width:500px ;height:250px;"  *ngFor='let r of realestate' >
+
+                        
+                        <div class="card-body">
+                            
+                    <table>
+                        <tr >
+                            <td>
+                                <img width='280px' height='200px' src='assets/{{r.images[1]}}' style="margin-right: 10px;">
+                            </td>
+                            
+                                <h3 style="color: dodgerblue;font-size: large;">{{r.name}} </h3>
+                            {{r.town}}<br>
+                            {{r.municipality}}-{{r.microlocation}}<br><br>
+                            Cena: <span style="color: green;"><b>{{r.price}}€</b></span><br><br>
+                            Linije prevoza: {{r.transport}}
+                            
+                        </tr>
+                    </table>
+               
+                </div>
+            
+            </div>
+        
+                
+            </div>
+        </div>
+
+        <footer>
+            <p>prodajanekretnina.rs</p>
+          </footer>
+    </body>
+</form> 

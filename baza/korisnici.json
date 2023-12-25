@@ -1,0 +1,111 @@
+[{
+  "_id": {
+    "$oid": "61d72a034a1795c0722f6d8e"
+  },
+  "name": "Kristina",
+  "surname": "Stankovic",
+  "username": "kika",
+  "password": "kika123",
+  "town": "Sabac",
+  "birthDate": "23-11-1999",
+  "phoneNumber": "0648324548",
+  "email": "kika.stan@gmail.com",
+  "type": "kupac",
+  "image": null
+},{
+  "_id": {
+    "$oid": "61d98cdf96310038f8b7e61b"
+  },
+  "name": "Anica",
+  "surname": "Arsic",
+  "username": "anica",
+  "password": "anica123",
+  "town": "Sabac",
+  "birthDate": "28-04-1999",
+  "phoneNumber": "066",
+  "email": "anica.arsicc@gmail.com",
+  "type": "kupac",
+  "image": null,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61f02eed5af23b3930a0cb3f"
+  },
+  "name": "Milica",
+  "surname": "Petrovic",
+  "username": "milika",
+  "password": "milika123",
+  "town": "Beograd",
+  "birthDate": "25-01-1980",
+  "phoneNumber": "062345676",
+  "email": "milika@gmail.com",
+  "type": "oglasivac",
+  "agency": "Cvrcak",
+  "licenceNumber": 42324009,
+  "image": null,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61f455229b92032a3cf0d88a"
+  },
+  "name": "Milos",
+  "surname": "Milosevic",
+  "username": "milos",
+  "password": "milos123",
+  "town": "Pancevo",
+  "birthDate": "08-08-1980",
+  "phoneNumber": "064345768",
+  "email": "milos@yahoo.com",
+  "type": "admin",
+  "image": null,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61f455c49b92032a3cf0d88c"
+  },
+  "name": "Mina",
+  "surname": "Jankovic",
+  "username": "mince",
+  "password": "mince123",
+  "town": "Novi Sad",
+  "birthDate": "10-10-1999",
+  "phoneNumber": "063357786",
+  "email": "mince@gmail.com",
+  "type": "oglasivac",
+  "image": null,
+  "agency": "Terazije",
+  "licenceNumber": 4568764009,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61fab7df042aff2058fa24d0"
+  },
+  "name": "Dragan",
+  "surname": "Petrovic",
+  "username": "dragan",
+  "password": "dragan123",
+  "town": "Novi Sad",
+  "birthDate": "12-12-1992",
+  "phoneNumber": "065748343",
+  "email": "dragan.petrovic@gmail.com",
+  "type": "oglasivac",
+  "image": null,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61fab83b042aff2058fa24d1"
+  },
+  "name": "Teodora",
+  "surname": "Milenkovic",
+  "username": "teodora",
+  "password": "teodora123",
+  "town": "Beograd",
+  "birthDate": "12-10-1970",
+  "phoneNumber": "062547832",
+  "email": "teodora@yahoo.com",
+  "type": "oglasivac",
+  "image": "1645209094074.JPG",
+  "agency": "Beohost",
+  "licenceNumber": 4568764432,
+  "__v": 0
+}]

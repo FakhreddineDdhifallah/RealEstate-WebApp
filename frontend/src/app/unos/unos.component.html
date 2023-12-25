@@ -1,0 +1,196 @@
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <header>
+        <mat-toolbar class="header">
+            <span style="font-style: italic;" [routerLink]="['']">prodajanekretnina.rs</span> 
+                <span class="example-spacer2"></span>
+                <span class="example-spacer2"></span>
+            <a [routerLink]="['/oglasivac']" style="color: white;">Početna stranica</a>
+            <span class="example-spacer2"></span>
+            <a [routerLink]="['/unos']" style="color: white;">Unesite novu nekretninu</a>
+            <span class="example-spacer"></span>
+            <a  [routerLink]="['']" (click)="logout()" style="color: white;">Odjavi se</a>
+          </mat-toolbar>
+    </header>
+    <br>
+    <div class='container-fluid'>
+        <div class='row'>
+            <div class='col-sm-12'>
+                <table>
+                    <tr>
+                        <td>Tip nekretnine </td>
+                        <td>
+                            <select name="tipNekretnine" [(ngModel)]='type' required>
+                                <option value="Stan">Stan</option>
+                                <option value="Kuca">Kuca</option>
+                                <option value="Vikendica">Vikendica</option>
+                                <option value="Lokal">Lokal</option>
+                                <option value="Magacin">Magacin</option>  
+                            </select>
+                        </td>
+                        <br>
+                    </tr>
+                    
+                    <tr>
+                        <td>Grad</td>
+                        <td><input type="text" name='lokacija1' [(ngModel)]='town'></td>
+                    </tr>
+                    <tr>
+                        <td>Opština</td>
+                        <td><input type="text" name='lokacija2' [(ngModel)]='municipality'></td>
+                    </tr>
+                    <tr>
+                        <td>Mikrolokacija</td>
+                        <td><input type="text" name='lokacija3' [(ngModel)]='microlocation'></td>
+                    </tr>
+                    <tr>
+                        <td>Ulica</td>
+                        <td><input type="text" name='ulica' [(ngModel)]='street'></td>
+                    </tr>
+                    <tr>
+                        <td>Kvadratura(m2)</td>
+                        <td><input type="number" name="kvadratura" [(ngModel)]='area'></td>
+                    </tr>
+                    <tr>
+                        <td>Broj prostorija</td>
+                        <td><select name="minBrSoba" [(ngModel)]='rooms'>
+                            
+                            <option>1</option>
+                            <option>1.5</option>
+                            <option>2</option>
+                            <option>2.5</option>
+                            <option>3</option> 
+                            <option>3.5</option> 
+                            <option>4</option> 
+                            <option>4.5</option> 
+                            <option>5</option>
+                            <option>5+</option>
+                        </select></td>
+                    </tr>
+                    <tr>
+                        <td>Godina izgradnje</td>
+                        <td><input type="number" name="godina" [(ngModel)]='year'></td>
+                    </tr>
+                    <tr>
+                        <td>Sprat</td>
+                        <td><input type="number" name="sprat" [(ngModel)]='floor'></td>
+                    </tr>
+                    <tr>
+                        <td>Ukupan broj spratova</td>
+                        <td><input type="number" name="brspratova" [(ngModel)]='totalFloors'></td>
+                    </tr>
+                    <tr>
+                        <td>Stanje</td>
+                        <td><select name="stanje" [(ngModel)]='state'>
+                            
+                            <option value="Izvorno">Izvorno</option>
+                            <option value="Renovirano">Renovirano</option>
+                            <option value="LUX">LUX</option>
+                        </select></td>
+                    </tr>
+                    <tr>
+                        <td>Grejanje</td>
+                        <td><input type="text" name="grejanje" [(ngModel)]='heating'></td>
+                    </tr>
+                    <tr>
+                        <td>Parking</td>
+                        <td><select name="parking"  [(ngModel)]='parking'>
+                            <option>DA</option>
+                            <option>NE</option>
+                        </select>
+                    </td>
+                    </tr>
+                    <tr>
+                        <td>Cena (€) </td>
+                        <td><input type="number" name="cena" [(ngModel)]='price'></td>
+                    </tr>
+                    <tr>
+                        <td>Mesečne obaveze (€)</td>
+                        <td><input type="number" name="obaveze" [(ngModel)]='monthlyUtilities'></td>
+                    </tr>
+                    <tr>
+                        <td>Opis nekretnine</td>
+                        <td><textarea name="about" rows="3" cols="40" maxlength="" [(ngModel)]='about'></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Linije prevoza u blizini</td>
+                        <td>
+                            <select name="linije" [(ngModel)]="lines" multiple>
+                                <option value="2">2</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option>10</option>
+                                <option>12</option>
+                                <option>14</option>
+                                <option>26</option>
+                                <option>27</option>
+                                <option>33</option>
+                                <option>48</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+                <br>
+                Označite karakteristike nekretnine:
+               <div class="card-body">
+                    <table style="width: 500px;">
+                        <tr>
+                            <td>
+                                <input type="checkbox" name="t" [(ngModel)]="terasa"> Terasa
+                            </td>
+                            
+                            <td>
+                              <input type="checkbox" name="p"  value="Podrum" [(ngModel)]="podrum"> Podrum
+                          </td>
+                          <td>
+                              <input type="checkbox" name="i"  [(ngModel)]="internet" > Internet
+                          </td>
+                        </tr>
+                        <tr>
+                            <td>
+                              <input type="checkbox" name="Lodja" [(ngModel)]="lodja"> Lođa
+                            </td>
+                            <td>
+                              <input type="checkbox" name="g" [(ngModel)]="garaza"> Garaža
+                            </td>
+                            <td>
+                              <input type="checkbox" name="in" [(ngModel)]="interfon"> Interfon
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                              <input type="checkbox" name="franc" [(ngModel)]="franc"> Franc. balkon
+                            </td>
+                            <td>
+                              <input type="checkbox" name="bas" [(ngModel)]="basta" > Sa baštom
+                            </td>
+                            <td>
+                                <input type="checkbox" name="tel" [(ngModel)]="telefon"> Telefon
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                              <input type="checkbox" name="Lift" [(ngModel)]="lift"> Lift
+                            </td>
+                            <td>
+                              <input type="checkbox"  name="Klima" [(ngModel)]="klima"> Klima
+                            </td>
+                        </tr>
+                        
+                    </table> 
+                  </div> 
+                  <input type="file" id="files" name="files" (change)="onFileSelected($event)" multiple><br>
+                       <span style="color: red;">{{errImages}}</span> <br>
+                <button (click)='insert()' name="unesi" value="unesi">Unesi novu nekretninu</button><br> 
+                <span style="color: red;">{{errEmptyData}}</span>  
+                <br>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>prodajastanova.com</p>
+      </footer>
+</body>

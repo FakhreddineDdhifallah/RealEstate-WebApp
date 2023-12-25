@@ -1,0 +1,21 @@
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <header>
+        <mat-toolbar class="header">
+            <span style="font-style: italic;" [routerLink]="['']">prodajanekretnina.rs</span> 
+                <span class="example-spacer2"></span>
+                <span class="example-spacer2"></span>
+            <a [routerLink]="['/kupac']" style="color: white;">Početna stranica</a>
+            <span class="example-spacer2"></span>
+            <a [routerLink]="['/advancedsearch']" style="color: white;">Napredna pretraga</a>
+            <span class="example-spacer2"></span>
+            <a [routerLink]="['/favorites']" style="color: white;">Omiljene nekretnine</a>
+            <span class="example-spacer"></span>
+            <a  [routerLink]="['']" (click)="logout()" style="color: white;">Odjavi se</a>
+          </mat-toolbar>
+      </header>
+      <body>
+          
+      </body>

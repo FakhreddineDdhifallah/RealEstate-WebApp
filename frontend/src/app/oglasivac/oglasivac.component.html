@@ -1,0 +1,77 @@
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <header>
+        <mat-toolbar class="header">
+            <span style="font-style: italic;" [routerLink]="['']">prodajanekretnina.rs</span> 
+                <span class="example-spacer2"></span>
+                <span class="example-spacer2"></span>
+            <a [routerLink]="['/oglasivac']" style="color: white;">Početna stranica</a>
+            <span class="example-spacer2"></span>
+            <a [routerLink]="['/unos']" style="color: white;">Unesite novu nekretninu</a>
+            <span class="example-spacer"></span>
+            <a  [routerLink]="['']" (click)="logout()" style="color: white;">Odjavi se</a>
+          </mat-toolbar>
+    </header>
+    <br>
+    <div class='container-fluid'>
+        <div class='row'>
+            <div class='col-sm-12'>
+                <span style="font-style: italic;color: blue;">Dobrodošli {{user.name}}</span>
+                <br><br>
+                <div class="card" style="width: fit-content;height:fit-content;margin-left: 18px;" *ngFor='let r of myREs'>
+                    <div class="card-body">
+                      
+                    
+                <table style="width: 100%;">
+                    
+                    <tr >
+                        <td>
+                            <img width='300px' height='250px' src='assets/{{r.images[0]}}'>
+                        </td>
+                        <td>
+                            <table style="width: 1200px;margin-left: 20px;">
+                                <tr>
+                                    <a routerLink="/details/{{r._id}}" >{{r.name}}-{{r.town}}-{{r.municipality}}-{{r.microlocation}}</a> 
+                                </tr>
+                                <tr>
+                                    <td>Površina: {{r.area}}m2</td>
+                                    <td>Cena:<b><span style="color: green;"> {{r.price}}€</span></b></td>
+                                </tr>
+                                <tr>
+                                    <td>Broj soba: {{r.rooms}}</td>
+                                    <td>
+                                        <span *ngIf="r.sold=='ne'">
+                                            <button name="prodato"  class="form-control" style="background-color: dodgerblue;color: white;width: 100px;" (click)="markAsSold(r._id)">PRODATO</button>
+                                            </span>
+                                            <span *ngIf="r.sold=='da'" style="color: blue;font-style: italic;">
+                                                PRODATO
+                                            </span>
+                                    </td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td>Sprat: {{r.floor}}</td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 30%;">
+                                     {{r.about}}
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                        
+                    </tr>
+                </table>
+                </div>
+                </div>
+
+                
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>prodajanekretnina.rs</p>
+      </footer>
+</body>

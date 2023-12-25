@@ -1,0 +1,129 @@
+<head>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <header>
+        <mat-toolbar class="header">
+           <span style="font-style: italic;" [routerLink]="['']">prodajanekretnina.rs</span> 
+            <span class="example-spacer"></span>
+            <a [routerLink]="['/kupacadminreg']" style="color: white;">Kupi nekretninu</a>
+            <span class="example-spacer2"></span>
+            <a [routerLink]="['/oglasivacreg']" style="color: white;">Oglasi nekretninu</a>
+            <span class="example-spacer2"></span>
+            <a [routerLink]="['/adminreg']" style="color: white;">Administrator</a>
+          </mat-toolbar>
+      </header>
+    <br>
+    <div class='container-fluid'>
+        <div class='row'>
+            <div class='col-sm-3'>
+<form>
+    
+        
+    <span style="font-style: italic;">Ukoliko želite da postavite oglas, neophodno je da se prvo registrujete. 
+        Ukoliko već imate nalog, možete se odmah <a routerLink="">ulogovati</a></span><br><br>
+           <!-- <input type='text' name='name' [(ngModel)]='name' required>-->
+           
+            <div class="form-group">
+            <label for="usr">Ime:</label>
+            <input type="text"  name='name' class="form-control"  [(ngModel)]='name' required>
+            
+            </div>
+
+            <div class="form-group">
+            <label for="usr">Prezime:</label>
+            <input type="text" name='surname' class="form-control"  [(ngModel)]='surname'required>
+            
+            </div>
+
+            <div class="form-group">
+            <label for="usr">Korisničko ime:</label>
+            <input type="text"  name='username' class="form-control"  [(ngModel)]='username' required>
+            <span style="color: red;font-size: small;">{{errorUsername}}</span>
+            </div>
+            
+
+            <div class="form-group">
+            <label for="validationCustom01">Lozinka:</label>
+            <input type="password"  name='lozinka' class="form-control" id="validationCustom01"  [(ngModel)]='password' required>
+           
+            </div>
+            <div class="form-group">
+            <label for="validationCustom02">Lozinka(ponovo):</label>
+            <input type='password' name='password2' class="form-control" id="validationCustom02" [(ngModel)]='password2' required>
+           
+              <label for="usr" style="color: red;font-size: small;">{{errorPassword}}</label>
+            </div><br>
+
+              <div class="form-group">
+            <label for="usr">Grad:</label>
+            <input type='text' name='town' class="form-control" [(ngModel)]='town' required>
+            
+            </div>
+
+            <div class="form-group">
+            <label for="usr">Datum rođenja:</label>
+            <input type='date' name='birthDate' class="form-control" [(ngModel)]='birthDate' required>
+            
+            </div>
+
+            <div class="form-group">
+            <label for="usr">Broj telefona:</label>
+            <input type='tel' name='phoneNumber' class="form-control" [(ngModel)]='phoneNumber' required/>
+            
+            </div>
+
+            <div class="form-group">
+            <label for="usr">Email:</label>
+            <input type='email' name='email' class="form-control" [(ngModel)]='email' required>
+            <label for="usr" style="color: red;font-size: small;">{{errorEmail}}</label>
+              </div>
+              <br>
+           <br>
+          
+          <label for="usr">Odaberite svoju profilnu sliku: </label>
+          <input type="file"  accept="image/png, image/jpeg" class="form-control" (change)="onFileSelected($event)">
+       <br>
+       <div class="form-group">
+        <label for="usr">Ukoliko ste agent, navedite i agenciju u kojoj ste zaposleni, kao i broj Vaše licence </label>
+        <label for="usr">Agencija:  </label>
+        <select [(ngModel)]="agency">
+            <option *ngFor='let a of agencies'>
+                {{a.name}}
+            </option>
+        </select>
+        <br>
+        <label for="usr">Broj licence: </label>
+        <input type='text' name='licenceNumber' class="form-control" [(ngModel)]='licenceNumber'>
+    </div>
+    
+
+<br>
+<form #form="ngForm">
+<re-captcha id="recaptcha" name="recaptcha" #recaptcha="ngModel" [(ngModel)]="token" required [class.is-invalid]="recaptcha.invalid && (recaptcha.dirty || recaptcha.touched)"></re-captcha>
+        <div *ngIf="recaptcha.invalid && (recaptcha.dirty || recaptcha.touched)" class="invalid-feedback">
+          <div *ngIf="recaptcha.errors?.['required']">This field is required.</div>
+        </div>
+</form>
+
+<br>
+<span style="color: red;">{{errorEverythingFilled}} </span>
+    <br>    <br>
+    
+    <input type="button" name="dugme" value="Registruj se" class="form-control" style="background-color: dodgerblue;color: white;" 
+     (click)='send(form);registerMe();'><br>
+    
+
+</form>
+
+</div>
+</div>
+</div>
+
+<br>
+
+<footer>
+    <p>prodajanekretnina.rs</p>
+  </footer>
+</body>

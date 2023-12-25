@@ -1,0 +1,23 @@
+.header{
+    background-color: rgb(218, 112, 13);
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: white;
+    
+  }
+  footer {
+    background-color: rgb(218, 112, 13);
+    padding: 10px;
+    text-align: center;
+    color: white;
+  }
+
+  .example-spacer {
+    flex: 1 1 auto;
+  }
+  .example-spacer2{
+    flex: 0.01 0.1 auto;
+  }
+
+  
+
+  

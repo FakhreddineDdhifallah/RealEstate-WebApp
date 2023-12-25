@@ -1,0 +1,237 @@
+<head>
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+</head>
+<body>
+    <header>
+        <mat-toolbar class="header">
+            <span style="font-style: italic;" [routerLink]="['']">prodajanekretnina.rs</span> 
+                <span class="example-spacer2"></span>
+                <span class="example-spacer2"></span>
+            <a [routerLink]="['/kupac']" style="color: white;">Početna stranica</a>
+            <span class="example-spacer2"></span>
+            <a [routerLink]="['/advancedsearch']" style="color: white;">Napredna pretraga</a>
+            <span class="example-spacer2"></span>
+            <a [routerLink]="['/favorites']" style="color: white;">Omiljene nekretnine</a>
+            <span class="example-spacer"></span>
+            <a  [routerLink]="['']" (click)="logout()" style="color: white;">Odjavi se</a>
+          </mat-toolbar>
+      
+        </header> 
+    
+    <div class='container-fluid'>
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="card" style="width:fit-content;height:fit-content;margin-top: 30px;font-size: large;color: darkblue;">
+                    <div class="card-body">
+                      <p class="card-text">{{realestate.name}}--{{realestate.town}}-{{realestate.municipality}}-{{realestate.microlocation}}-{{realestate.street}}</p>
+                    </div>
+                  </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="card" style="width:440px;height:fit-content;margin-top: 30px;font-size: large;color: darkblue;">
+                    <div class="card-body">
+                      <p class="card-text" style="font-style: italic;">
+                        Prosečna cena kvadrata na lokaciji: 
+                        <span *ngIf="realestate.avgPrice>=realestate.price/realestate.area" style="color: green;">
+                        {{realestate.avgPrice}} €
+                      </span>
+                      <span *ngIf="realestate.avgPrice<realestate.price/realestate.area" style="color: red;">
+                       {{realestate.avgPrice}} €
+                      </span>
+                     </p>
+                    </div>
+                  </div>
+            </div>
+        </div>
+            <br>
+        <div class='row'>
+            <div class='col-sm-4'>
+                
+                
+                <carousel  [height]="300"  [cellsToShow]=1>
+                    <div *ngFor="let i of realestate.images" class="carousel-cell">
+                        <img src="assets/{{i}}">
+                    </div>
+                   
+                </carousel>
+            </div>
+            <div class="col-sm-7">
+                    <div class="card" style="width: fit-content;height:fit-content;">
+                        <div class="card-body">
+                          <p class="card-text"></p>
+                          <table style="width: 500px;">
+                              <tr>
+                                  <td>
+                                      Tip: {{realestate.name}}     
+                                  </td>
+                                  <td>
+                                      Kvadratura: {{realestate.area}} m2
+                                </td>
+                              </tr>
+                              <tr>
+                                  <td>
+                                  Oglašivač: {{realestate.advertiser}}
+                                </td>
+                                  <td>
+                                    Broj soba: {{realestate.rooms}}
+                                </td>
+                              </tr>
+                              <tr>
+                                  <td>
+                                  Godina izgradnje: {{realestate.constructionYear}}
+                                </td>
+                                <td>
+                                    Sprat: {{realestate.floor}}
+                                </td>
+                                
+                              </tr>
+                              <tr>
+                                  <td>
+                                  Stanje: {{realestate.state}}
+                                </td>
+                                <td>
+                                    Ukupna spratnost: {{realestate.totalFloors}}
+                                </td>
+                              </tr>
+                              <tr>
+                                <td >
+                                  Tip grejanja: {{realestate.heating}}
+                                </td>
+                                <td>
+                                    Parking: {{realestate.parking}}
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                    Oglašivač: {{advertiserName}} {{advertiserSurname}}
+                                </td>
+                                <td>
+                                    Cena:
+                                    <span style="color: green;font-size: large;"><b>{{realestate.price}}€</b></span>
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                
+                                <td>
+                                    <span *ngIf="realestate.advertiser=='agencija'">
+                                    Agencija: {{realestate.agencyName}}
+                                    </span>
+                                </td>
+                                <td>
+                                    <span *ngIf="realestate.advertiser=='agencija'">
+                                    Adresa agencije: {{agencyAddress}}
+                                </span>
+                                </td>
+                            
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span *ngIf="realestate.advertiser=='agencija'">
+                                PIB agencije: {{agencyPIB}}
+                                </span>
+                                </td>
+                                <td>
+                                    <span *ngIf="realestate.advertiser=='agencija'">
+                                    Grad: {{agencyTown}}
+                                </span>
+                                </td>
+                            </tr>
+                        
+                            
+                              <br>
+                              <tr>
+                                  <td>
+                                <button class="form-control"  style="background-color:dodgerblue;  
+                                 color: white;width: 150px;" (click)="addToFavorites()" >Dodaj u omiljene</button>
+                                </td>
+                                <td>
+                                   
+                                    <span>
+                                    <button (click)="showPhone()" *ngIf="kliknuto==false" class="form-control" style="background-color:dodgerblue;color: white;width: 200px;"><b>+ </b>Prikaži kontakt telefon</button>
+                                    </span>
+                                    <span>
+                                    <button (click)="showPhone()" *ngIf="kliknuto" class="form-control" style="background-color:dodgerblue;color: white;width: 200px;"><b>- </b>Prikaži kontakt telefon</button>
+                                    </span>
+                                    <span (click)="showPhone()" *ngIf="kliknuto==false"></span>
+                                        
+                                        <span *ngIf="kliknuto" style="font-size: large;">{{advertiserPhone}}</span>
+                                </td>
+                            </tr>
+                            
+                          </table>
+                        </div>
+                      </div> 
+            </div>
+        </div>
+        
+        <br>
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="card" style="width: fit-content;height:fit-content;">
+                    <div class="card-body">
+                      <p class="card-text">{{realestate.about}}</p>
+                    </div>
+                  </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="card" style="width:fit-content;">
+                    <div class="card-body">
+                        <table style="width: 500px;">
+                            <tr>
+                                <td>
+                                    <input type="checkbox" name="t" [(ngModel)]="realestate.terasa" onclick="return false"> Terasa
+                                </td>
+                                
+                                <td>
+                                  <input type="checkbox" name="p"  value="Podrum" [(ngModel)]="realestate.podrum" onclick="return false"> Podrum
+                              </td>
+                              <td>
+                                  <input type="checkbox" name="i"  [(ngModel)]="realestate.internet" onclick="return false"> Internet
+                              </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                  <input type="checkbox" name="Lođa" [(ngModel)]="realestate.lodja" onclick="return false"> Lođa
+                                </td>
+                                <td>
+                                  <input type="checkbox" name="g" [(ngModel)]="realestate.garaza" onclick="return false"> Garaža
+                                </td>
+                                <td>
+                                  <input type="checkbox" name="in" [(ngModel)]="realestate.interfon" onclick="return false"> Interfon
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                  <input type="checkbox" name="franc" [(ngModel)]="realestate.franc" onclick="return false"> Franc. balkon
+                                </td>
+                                <td>
+                                  <input type="checkbox" name="bas" [(ngModel)]="realestate.basta" onclick="return false"> Sa baštom
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="tel" [(ngModel)]="realestate.telefon" onclick="return false"> Telefon
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                  <input type="checkbox" name="Lift" [(ngModel)]="realestate.lift" onclick="return false"> Lift
+                                </td>
+                                <td>
+                                  <input type="checkbox"  name="Klima" [(ngModel)]="realestate.klima" onclick="return false"> Klima
+                                </td>
+                            </tr>
+                            
+                        </table> 
+                    </div>
+                  </div> 
+        </div>
+        </div>
+    </div>
+    <br>
+    <footer>
+        <p>prodajanekretnina.rs</p>
+        
+      </footer>
+</body>

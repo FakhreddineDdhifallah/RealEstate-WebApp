@@ -1,0 +1,15 @@
+[{
+  "_id": {
+    "$oid": "62136cd2ac459134d0e92df5"
+  },
+  "name": "proba",
+  "surname": "probic",
+  "username": "proba",
+  "password": "pr",
+  "town": "Pancevo",
+  "birthDate": "02-02-1990",
+  "phoneNumber": "0640807134",
+  "email": "proba@gmail.com",
+  "type": "kupac",
+  "__v": 0
+}]

@@ -1,0 +1,68 @@
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <header>
+        <mat-toolbar class="header">
+            <span style="font-style: italic;" [routerLink]="['']">prodajanekretnina.rs</span> 
+                <span class="example-spacer2"></span>
+                <span class="example-spacer2"></span>
+            <a [routerLink]="['/admin']" style="color: white;">Početna stranica</a>
+            <span class="example-spacer2"></span>
+            <a [routerLink]="['/novaagencija']" style="color: white;">Unos nove agencije</a>
+            <span class="example-spacer"></span>
+            <span style="font-style: italic;">{{user.name}}</span>
+            <span class="example-spacer2"></span>
+            <a  [routerLink]="['']" (click)="logout()" style="color: white;">Odjavi se</a>
+          </mat-toolbar>
+    </header>
+    <div class='container-fluid'>
+        <div class='row'>
+            <div class='col-sm-12'>
+                <span style="font-style: italic;color: blue;">Dobrodošli {{user.name}}</span><br>
+                Pregled zahteva:<br>
+                <div class="card" style="width: fit-content;height:fit-content;" *ngFor="let z of zahtevi">
+                    <div class="card-body">
+                      
+                          <table>
+                              <tr>
+                                  <td>
+                          Ime i prezime: {{z.name}} {{z.surname}}
+                        </td>
+                        <td>
+                            Grad: {{z.town}}
+                        </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                Korisničko ime: {{z.username}}
+                               </td>
+                               <td>
+                                   Tip korisnika: {{z.type}}
+                               </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Email: {{z.email}}
+                                </td>
+                            </tr>
+                            <br>
+                            <tr>
+                                <td>
+                                <button (click)="odobri(z)" class="form-control" style="background-color: dodgerblue;color: white;width: 200px;">Odobri</button>
+                            </td>
+                            <td>
+                                <button (click)="odbij(z)" class="form-control" style="background-color: dodgerblue;color: white;width: 200px;">Odbij</button>
+                            </td>
+                            </tr>
+                        </table>
+                    </div>
+                  </div>
+
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>prodajanekretnina.rs</p>
+      </footer>
+</body>
